@@ -1,6 +1,5 @@
 CON
 
-  ' These values are only used when running this module by itself (demo mode).
   _clkmode = xtal1 + pll16x
   _xinfreq = 5_000_000
 
@@ -23,9 +22,10 @@ PUB Demo | n, i, j, k, d, zero
   Start(30, 3_000_000)
   n := txx.Wait
   
-  txx.Str(string(13, "TXX demo.", 13, "Init cycles="))
+  txx.Str(string(13, 10, "TXX demo.", 13, 10, "Init cycles="))
   DecLong(n)
   Tx(13)
+  Tx(10)
   
   ' Determine time to print empty string
   zero := 0
@@ -34,6 +34,7 @@ PUB Demo | n, i, j, k, d, zero
   Str(string("Empty string="))
   DecLong(n)
   Tx(13)
+  Tx(10)
 
   d := n
 
@@ -49,7 +50,7 @@ PUB Demo | n, i, j, k, d, zero
     Str(string(" (difference "))
     DecLong(n - d)
     d := n
-    Str(string(")",13))
+    Str(string(")",13,10))
 
   ' Determine times to print various values in different ways
   repeat i from 1 to 4 ' output modes: decimal, signed, hex, binary
@@ -67,6 +68,7 @@ PUB Demo | n, i, j, k, d, zero
         Str(string(": "))
         DecLong(n)
         Tx(13)
+        Tx(10)
         'waitcnt(cnt + (3 * clkfreq))
         
   ' Dump the start of memory
